@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,19 +86,13 @@ WSGI_APPLICATION = 'Config.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',  # Utilizamos el backend mssql-django
-        'NAME': 'Eradigital1',  # Nombre de la base de datos
-        'HOST': 'VANEGAJUDITH',  # IP del servidor SQL Server
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',  # Driver ODBC instalado
-            'trusted_connection': 'yes',  # Habilita la autenticación de Windows
-            'extra_params': 'TrustServerCertificate=yes',  # Útil si estás usando SSL sin un certificado de confianza
-        },
-    }
-}
 
+
+DATABASES = {
+    'default': dj_database_url.parse(
+        os.getenv('DATABASE_URL')
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators

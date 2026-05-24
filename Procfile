@@ -1,1 +1,1 @@
-web: gunicorn Backend_ED.wsgi
+web: gunicorn Config.wsgi

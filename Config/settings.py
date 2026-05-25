@@ -88,10 +88,15 @@ WSGI_APPLICATION = 'Config.wsgi.application'
 #}
 
 
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
+
+if isinstance(DATABASE_URL, bytes):
+    DATABASE_URL = DATABASE_URL.decode()
+
+DATABASE_URL = DATABASE_URL.strip()
+
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.getenv('DATABASE_URL')
-    )
+    'default': dj_database_url.parse(DATABASE_URL)
 }
 
 # Password validation

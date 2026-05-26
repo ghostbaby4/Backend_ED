@@ -27,9 +27,9 @@ from apps.seguridad.settings_apps import SEGURIDAD_SETTINGS_APPS
 SECRET_KEY = 'django-insecure-6%^t^q&+a7b73i*@*9dgwv+4+m+bp#haj0f-mo!n3(+0l!4sv8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['eradigital-api.onrender.com']
 
 
 # Application definition

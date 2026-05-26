@@ -19,6 +19,13 @@ from django.urls import path, include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from .views import home
+
+urlpatterns = [
+    path('', home),
+    path('admin/', admin.site.urls),
+    path('catalogo/', include('apps.catalogo.urls')),
+]
 
 schema_view = get_schema_view(
    openapi.Info(
